@@ -1,0 +1,20 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>saveFileDialogTitle}" class="customHeaderStyle"  draggable="true">
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form0">
+			<f:content>
+				<Label text="{i18n>description}"/>
+				<Input id="idFirstName" value="{/Description}"/>
+				<Label text="Options"/>
+				<CheckBox id="idFlatten" text="{i18n>saveFileDialogFlattenFile}" selected="{/FlattenFile}"/>
+			</f:content>
+		</f:SimpleForm>
+		<beginButton>
+			<Button text="{i18n>save}" press="saveFile"  type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}"   press="closeSaveDialog" type="Reject" />
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

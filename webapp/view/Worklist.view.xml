@@ -1,0 +1,67 @@
+<mvc:View controllerName="com.cjastram.PDFEditor.controller.Worklist"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:semantic="sap.f.semantic">
+
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title text="{i18n>worklistTitle}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<Table id="table" width="auto" items="{path: '/PdfFiles'}"				
+				 noDataText="{worklistView>/tableNoDataText}" busyIndicatorDelay="{worklistView>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished">
+				<headerToolbar>
+					<OverflowToolbar>
+						<Title id="tableHeader" text="{worklistView>/worklistTableTitle}" level="H3"/>
+
+						<ToolbarSpacer />
+						<SearchField id="searchField" tooltip="{i18n>worklistSearchTooltip}" search=".onSearch">
+							<layoutData>
+								<OverflowToolbarLayoutData maxWidth="200px" priority="NeverOverflow"/>
+							</layoutData>
+						</SearchField>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column id="deleteColumn" width="50px"></Column>
+					<Column id="nameColumn" width="30%">
+						<Text text="{i18n>tableNameColumnTitle}" id="filenameColumnTitle" width="30%"/>
+					</Column>
+					<Column id="descriptionColumn" width="30%">
+						<Text text="{i18n>tableDescriptionColumnTitle}" id="descriptionTitle"/>
+					</Column>
+					<Column id="sizeColumn" width="15%" hAlign="Right">
+						<Text text="{i18n>tableSizeColumnTitle}" id="nameSizeTitle"/>
+					</Column>
+					<Column id="infoColumn" width="25%">
+						<Text text="{i18n>tableInfoColumnTitle}" id="nameInfoTitle"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press=".onPress">
+						<cells>
+							<Button icon="sap-icon://delete" tooltip="Delete" press="deleteFile">
+								<customData>
+									<core:CustomData key="Id" value="{Id}"/>
+								</customData>
+							</Button>
+							<VBox>
+								<ObjectIdentifier title="{FileName}"/>
+								<Text text="{Id}" />
+							</VBox>
+							<Text text="{Description}"/>
+							<Text text="{FileSize}"/>
+							<Text text="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }  by {ChangedBy}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+
+		<!-- Custom Title Icon Content-->
+		<semantic:titleCustomIconActions>
+			<Button icon= "sap-icon://upload" text="Upload" press="showUploadDialog" />
+		</semantic:titleCustomIconActions>
+	</semantic:SemanticPage>
+</mvc:View>

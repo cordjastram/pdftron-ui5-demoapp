@@ -1,0 +1,1 @@
+sap.ui.define(["./BaseController"],function(t){"use strict";return t.extend("com.cjastram.PDFEditor.controller.NotFound",{onLinkPressed:function(){this.getRouter().navTo("worklist")}})});

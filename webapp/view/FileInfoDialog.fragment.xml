@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog title="{i18n>fileInfoDialogTitle}" resizable="false" icon="sap-icon://message-information" draggable="true" class="customHeaderStyle">
+        <f:SimpleForm id="displayForm"  editable="false"
+        layout="ResponsiveGridLayout"
+        singleContainerFullSize="false">
+            <f:content>
+                <Label text="Application" />
+                <Text text="{/Application}" />
+                <Label text="Creator" />
+                <Text text="{/Creator}" />
+                <Label text="Keywords" />
+                <Text text="{/Keywords}" />
+                <Label text="Header" />
+                <Text text="{/Header}" />
+                <Label text="Producer" />
+                <Text text="{/Producer}" />
+                <Label text="Subject" />
+                <Text text="{/Subject}" />
+                <Label text="Title" />
+                <Text text="{/Title}" />
+            </f:content>
+        </f:SimpleForm>
+        <endButton>
+            <Button text="{i18n>ok}" type="Accept" press="closeInfoDialog"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

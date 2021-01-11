@@ -1,0 +1,108 @@
+<mvc:View controllerName="com.cjastram.PDFEditor.controller.Object"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:t="sap.ui.table"
+	xmlns:pdftron="com.cjastram.PDFEditor.control"  
+	xmlns:mvc="sap.ui.core.mvc">
+	<ObjectPageLayout id="ObjectPageLayout">
+		<headerTitle>
+			<ObjectPageHeader id="headerForTest" objectTitle="File: {FileName} - {Description}"/>
+		</headerTitle>
+		<sections>
+			<ObjectPageSection title="PDF Editor">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<pdftron:PDFEditor data="{Data}"  readonly="{Flattened}" username="{CurrentEditor}" height="70vh" id="pdfEditorId" press="onPdfEditorButtonPress">
+								<pdftron:buttons>
+									<pdftron:button type="divider" />
+									<pdftron:button type="actionButton" image="{pdfeditor>saveIcon}" title="{i18n>save}" name="btnSave" />
+									<pdftron:button type="actionButton" image="{pdfeditor>infoIcon}" title="{i18n>info}" name="btnInfo" />
+								</pdftron:buttons>
+							</pdftron:PDFEditor>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+
+			<ObjectPageSection title="Annotations">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<t:TreeTable id="treeTable" selectionMode="Single" minAutoRowCount="2" visibleRowCountMode="Interactive" alternateRowColors="true" enableColumnReordering="false" rows="{ path:'PdfAnnotationSet', parameters : 
+							{ countMode: 'Inline', numberOfExpandedLevels : 2, treeAnnotationProperties : 
+							{ hierarchyLevelFor : 'HierarchyLevel',  hierarchyNodeFor : 'AnnotationId', hierarchyParentNodeFor : 'InReplyTo', hierarchyDrillStateFor : 'DrillState' } } }">
+								<t:columns>
+									<t:Column label="Author" id="id_level0" width="15%">
+										<t:template>
+											<m:Text text="{Author}" />
+										</t:template>
+									</t:Column>
+									<t:Column label="Content" width="36%">
+										<t:template>
+											<m:Text text="{Content}" />
+										</t:template>
+									</t:Column>
+									<t:Column label="Created" width="12%">
+										<t:template>
+											<m:Text text="{ path: 'CreatedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
+										</t:template>
+									</t:Column>
+									<t:Column label="Changed" width="12%">
+										<t:template>
+											<m:Text text="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
+										</t:template>
+									</t:Column>
+									<t:Column label="State" width="10%">
+										<t:template>
+											<m:Text text="{State}" />
+										</t:template>
+									</t:Column>
+									<t:Column label="Page" width="5%" hAlign="Right">
+										<t:template>
+											<m:Text text="{PageNr}"/>
+										</t:template>
+									</t:Column>
+								</t:columns>
+							</t:TreeTable>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection title="Form Data">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<m:Table noDataText="{i18n>tableNoDataText}" id="formFieldsTableId" width="auto" class="sapUiSizeCompact" items="{ path: 'PdfFormFieldSet' }">
+								<m:columns>
+									<m:Column width="30%">
+										<m:Text text="Name"/>
+									</m:Column>
+									<m:Column width="30%">
+										<m:Text text="Value"/>
+									</m:Column>
+									<m:Column width="20%">
+										<m:Text text="Created"/>
+									</m:Column>
+									<m:Column width="20%">
+										<m:Text text="Changed"/>
+									</m:Column>
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem >
+										<m:cells>
+											<m:Text text="{Name}"/>
+											<m:Text text="{Value}"/>
+											<m:Text text="{ path: 'CreatedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
+											<m:Text text="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

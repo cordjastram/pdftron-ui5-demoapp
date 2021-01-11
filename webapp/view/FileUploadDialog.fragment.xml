@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog title="Upload File" id="fileUploadDialogId" contentWidth="30%">
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" id="form0">
+			<f:content>
+				<Label text="{i18n>filename}"/>
+				<u:FileUploader width="100%" maximumFileSize="15" id="fileUploaderId" name="myFileUpload" mimeType="application/pdf" buttonText="{i18n>select_file}" tooltip="Upload your file to the local server" fileSizeExceed="fileSizeExceed" uploadComplete="fileUploadComplete"/>
+				<Label text="{i18n>description}"/>
+				<Input id="idDescription" value="{/Description}"/>
+			</f:content> 
+		</f:SimpleForm>
+		<beginButton>
+			<Button text="{i18n>upload}" press="uploadFile" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>cancel}" press="closeUploadDialog" type="Reject"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
