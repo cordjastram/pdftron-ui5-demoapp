@@ -2,18 +2,24 @@
 	xmlns="sap.uxap"
 	xmlns:m="sap.m"
 	xmlns:t="sap.ui.table"
-	xmlns:pdftron="com.cjastram.PDFEditor.control"  
+	xmlns:pdftron="com.cjastram.PDFEditor.control"
 	xmlns:mvc="sap.ui.core.mvc">
-	<ObjectPageLayout id="ObjectPageLayout">
+ 
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="false">
 		<headerTitle>
-			<ObjectPageHeader id="headerForTest" objectTitle="File: {FileName} - {Description}"/>
+			<ObjectPageHeader id="headerForTest"
+							  objectTitle="{FileName} - {Description}"
+							  showTitleSelector="false"
+								objectSubtitle="Current Editor: {CurrentEditor}">
+			</ObjectPageHeader>
 		</headerTitle>
+
 		<sections>
 			<ObjectPageSection title="PDF Editor">
 				<subSections>
 					<ObjectPageSubSection>
 						<blocks>
-							<pdftron:PDFEditor data="{Data}"  readonly="{Flattened}" username="{CurrentEditor}" height="70vh" id="pdfEditorId" press="onPdfEditorButtonPress">
+							<pdftron:PDFEditor data="{Data}" readonly="{Flattened}" username="{CurrentEditor}" height="85vh" id="pdfEditorId" press="onPdfEditorButtonPress">
 								<pdftron:buttons>
 									<pdftron:button type="divider" />
 									<pdftron:button type="actionButton" image="{pdfeditor>saveIcon}" title="{i18n>save}" name="btnSave" />
@@ -24,7 +30,6 @@
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
-
 			<ObjectPageSection title="Annotations">
 				<subSections>
 					<ObjectPageSubSection >
@@ -75,13 +80,13 @@
 						<blocks>
 							<m:Table noDataText="{i18n>tableNoDataText}" id="formFieldsTableId" width="auto" class="sapUiSizeCompact" items="{ path: 'PdfFormFieldSet' }">
 								<m:columns>
-									<m:Column width="30%">
+									<m:Column width="20%">
 										<m:Text text="Name"/>
 									</m:Column>
-									<m:Column width="30%">
+									<m:Column width="45%">
 										<m:Text text="Value"/>
 									</m:Column>
-									<m:Column width="20%">
+									<m:Column width="15%">
 										<m:Text text="Created"/>
 									</m:Column>
 									<m:Column width="20%">
@@ -94,7 +99,7 @@
 											<m:Text text="{Name}"/>
 											<m:Text text="{Value}"/>
 											<m:Text text="{ path: 'CreatedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
-											<m:Text text="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } }"/>
+											<m:Text text="{ path: 'ChangedAt', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd.MM.yyyy HH:mm', UTC: true } } - {ChangedBy}"/>
 										</m:cells>
 									</m:ColumnListItem>
 								</m:items>
