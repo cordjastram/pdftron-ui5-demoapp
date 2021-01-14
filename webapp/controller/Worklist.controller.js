@@ -114,6 +114,7 @@ sap.ui.define([
 					this._uploadFileDialog.open();
 				}.bind(this));
 			} else {
+				this._uploadFileDialog.setModel(oFileModel);
 				this._uploadFileDialog.open();
 			}
 		},
@@ -128,7 +129,7 @@ sap.ui.define([
 
 			var oFileUpload = this.getView().byId("fileUploaderId");
 			var file = oFileUpload.getFocusDomRef().files[0];
- 
+			 
 			var reader = new FileReader();
 
 			var description = oUploadModel.getProperty("/Description");
