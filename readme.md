@@ -1,3 +1,7 @@
+# [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=PQEU9WA7FUKVN) Sponsoring
+
+If this repository is helpful you can support me.
+
 # pdftron-ui5-demoapp
 
 This project wraps the [PDFTron WebViewer](https://www.pdftron.com/webviewer) as an SAP UI5 custom control. For the development I use VSCode. There is a detailed description available from the excellent [blog](https://blogs.sap.com/2020/06/28/installing-visual-studio-code-and-configuring-sap-extensions-in-visual-studio-code) where the installation and initial configuration is described.
