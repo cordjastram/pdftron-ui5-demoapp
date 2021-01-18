@@ -1,0 +1,26 @@
+{
+  "name": "pdfeditor",
+  "description": "",
+  "scripts": {
+    "build": "ui5 build",
+    "start": "ui5 serve -o index.html",
+    "deploy": "npx nwabap upload"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^1.14.0",
+    "eslint": "^7.13.0",
+    "eslint-config-ui5": "0.0.17",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-ui5": "^0.1.0",
+    "ui5-middleware-livereload": "^0.4.3",
+    "ui5-middleware-simpleproxy": "^0.2.1"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-simpleproxy"
+    ]
+  },
+  "dependencies": {
+    "nwabap-ui5uploader": "^0.3.4"
+  }
+}
