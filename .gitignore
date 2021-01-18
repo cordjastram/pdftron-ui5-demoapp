@@ -1,0 +1,17 @@
+/debug.log
+node_modules
+webapp/pdftron
+pdftron
+.eslintrc.js
+test.html
+test
+.
+.npmignore
+.vscode/settings.json
+.yo-rc.json
+webapp/localService/metadata.xml
+webapp/localService/mockserver.js
+.npmrc
+.vscode
+demo
+.nwabaprc
