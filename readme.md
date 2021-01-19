@@ -1,20 +1,32 @@
-# [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=PQEU9WA7FUKVN) Sponsoring
-
-If this repository is helpful you can support me.
-
 # pdftron-ui5-demoapp
 
 This project wraps the [PDFTron WebViewer](https://www.pdftron.com/webviewer) as an SAP UI5 custom control. For the development I use VSCode. There is a detailed description available from the excellent [blog](https://blogs.sap.com/2020/06/28/installing-visual-studio-code-and-configuring-sap-extensions-in-visual-studio-code) where the installation and initial configuration is described.
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=PQEU9WA7FUKVN) 
+
+If this repository is helpful then think about supporting me.
+
 ## Installation
 
-- Create a new SAPUI5 project using the worklist template as described in another excellent [blog](https://blogs.sap.com/2020/07/18/develop-sap-ui5-apps-using-visual-studio-code) from SaiNithesh Gajula.
+- Create an empty directory and open it using VSCode.
 
+- Open a terminal in VSCode and clone the repository of the demo application.
+```
+ git clone https://github.com/cordjastram/pdftron-ui5-demoapp
+```
+
+- Run npm install in the terminal
+```
+ npm install
+```
+
+- Change your directory in the terminal
+```
+ cd webapp
+```
 - Create a folder named `pdftron` in your webapp folder
 
 - Download the [PDFTron WebViewer](https://www.pdftron.com/downloads/WebViewer.zip) demo version and copy the `lib` folder into the `pdftron` folder.
-
-- Copy the `webapp` folder of the repository to the new project overwriting the existing files
 
 <figure>
   <img src="./images/1.png"   />
@@ -22,11 +34,31 @@ This project wraps the [PDFTron WebViewer](https://www.pdftron.com/webviewer) as
 
 - Install the OData services from [pdftron-ui5-odata](https://github.com/cordjastram/pdftron-ui5-odata) in your SAP system. The services allow you to perform CRUD operations on PDF files in your SAP system.
 
-- Change the baseUri in the ui5.yaml file to your SAP system.
+- Change the first part of the baseUri in the ui5.yaml file for your SAP system. For my demo system it is 'http://vhcalnplci:8000/sap/opu/odata/SAP/ZPDFFILE_SRV/'
+
+```YAML
+specVersion: "1.0"
+metadata:
+  name: PDFEditor
+type: application
+# https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/
+server:
+  customMiddleware:
+  - name: ui5-middleware-simpleproxy
+    mountPath: /srv/
+    afterMiddleware: compression
+    configuration:
+      baseUri: YOUR_SYSTEM/sap/opu/odata/SAP/ZPDFFILE_SRV/
+```			
 
 ## The demo application
 
-When you start the application you see an empty list of PDF files.
+You start the application by running the following command in your terminal
+
+```
+npm start
+```
+At first you see an empty list of PDF files.
 
 <figure>
   <img src="./images/2.png"/>
@@ -58,7 +90,7 @@ The form field data and the annotation data are written to the SAP database via 
 
 When you want to integrate the control into your own application copy the `control` and the `pdftron` folder from the demo application into your project.
 
-To use the control in an XML view you define the alias `pdftron` for the namespace of the control `xmlns:pdftron="your_application.control` and include it in the view in which you want to use the control. In the sample application I use `xmlns:pdftron="com.cjastram.PDFEditor.control`.
+To use the control in an XML view you define the alias `pdftron` for the namespace of the control `xmlns:pdftron="your_application.control` and include it in the view in which you want to use the control. In the sample application I use `xmlns:pdftron="com.cjastram.PDFEditor.control"`.
 
 ```XML
 <mvc:View controllerName="com.cjastram.PDFEditor.controller.Object"
@@ -80,7 +112,7 @@ Now the control can be included in the view via XML. In the XML you also define 
 </pdftron:PDFEditor>
 ```
 
-The images of the buttons are SVG icons taken from the [Material Design](https://material.io/resources/icons) web page and they are located in the file `pdfeditor.properties` located in the `control` folder of the application. I have added a model named `pdfeditor` in the `manifest.json` file which allows to use the model the same way as you use the `i18n` model of SAPUI5. When you need additional icons just add them this file
+The images of the buttons are SVG icons taken from the [Material Design](https://material.io/resources/icons) web page and they are located in the file `pdfeditor.properties` located in the `control` folder of the application. I have added a model named `pdfeditor` in the `manifest.json` file which allows to use this new model the same way as you use the `i18n` model of SAPUI5. When you need additional icons just add them to the `pdfeditor.properties` file.
 
 ```Json
 "models": {
@@ -91,6 +123,8 @@ The images of the buttons are SVG icons taken from the [Material Design](https:/
 		}
 	}
 ```
+
+Currently there are two icons available.
 ```Text
 # This is the resource bundle with icons for PDFEditor
 #~~~~ Custom Icons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
