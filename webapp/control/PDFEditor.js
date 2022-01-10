@@ -114,7 +114,13 @@ sap.ui.define(
       },
 
       setReadonly: function (bVal) {
-        this._callOrDelay(function (oViewer) { oViewer.annotManager.setReadOnly(bVal) });
+        this._callOrDelay(function (oViewer) {
+          if (bVal) {
+            oViewer.annotManager.enableReadOnlyMode();
+          } else {
+            oViewer.annotManager.disableReadOnlyMode();
+          }
+        });
       },
 
       setUsername: function (sName) {
