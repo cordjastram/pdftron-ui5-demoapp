@@ -72,15 +72,16 @@ sap.ui.define(
       /* renderer functions                                          */
       /* =========================================================== */
 
-      renderer: function (oRM, oControl) {
+      renderer: function (oRm, oControl) {
         // STEP 2: Creating a DIV tag
-        oRM.write("<div");
-        oRM.writeControlData(oControl);
-        oRM.addStyle("width", oControl.getWidth());
-        oRM.addStyle("height", oControl.getHeight());
-        oRM.writeStyles();
-        oRM.write(">");
-        oRM.write("</div>");
+        // creates the root element incl. the Control ID 
+        oRm.openStart("div", oControl);
+        // write the Control property width and height 
+        oRm.style("width", oControl.getWidth());
+        oRm.style("height", oControl.getHeight());
+        oRm.openEnd();
+        // close
+        oRm.close("div");
       },
 
       onAfterRendering: function () {
