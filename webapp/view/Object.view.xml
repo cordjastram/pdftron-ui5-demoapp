@@ -21,9 +21,9 @@
 						<blocks>
 							<pdftron:PDFEditor data="{Data}" readonly="{Flattened}" username="{CurrentEditor}" height="85vh" id="pdfEditorId" press="onPdfEditorButtonPress">
 								<pdftron:buttons>
-									<pdftron:button type="divider" />
-									<pdftron:button type="actionButton" image="{pdfeditor>saveIcon}" title="{i18n>save}" name="btnSave" />
-									<pdftron:button type="actionButton" image="{pdfeditor>infoIcon}" title="{i18n>info}" name="btnInfo" />
+									<pdftron:Button type="divider" />
+									<pdftron:Button type="actionButton" image="{pdfeditor>saveIcon}" title="{i18n>save}" name="btnSave" />
+									<pdftron:Button type="actionButton" image="{pdfeditor>infoIcon}" title="{i18n>info}" name="btnInfo" />
 								</pdftron:buttons>
 							</pdftron:PDFEditor>
 						</blocks>

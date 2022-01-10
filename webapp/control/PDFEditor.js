@@ -41,7 +41,7 @@ sap.ui.define(
         },
 
         aggregations: {
-          buttons: { type: "com.cjastram.PDFEditor.control.Button", multiple: true, singularName: "button" }
+          buttons: { type: "com.cjastram.PDFEditor.control.Button", multiple: true, singularName: "Button" }
         },
 
         events: {
