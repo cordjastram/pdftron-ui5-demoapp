@@ -112,7 +112,7 @@ Now the control can be included in the view via XML. In the XML you also define 
 </pdftron:PDFEditor>
 ```
 
-The images of the buttons are SVG icons taken from the [Material Design](https://material.io/resources/icons) web page and they are located in the file `pdfeditor.properties` located in the `control` folder of the application. I have added a model named `pdfeditor` in the `manifest.json` file which allows to use this new model the same way as you use the `i18n` model of SAPUI5. When you need additional icons just add them to the `pdfeditor.properties` file.
+The images of the buttons are SVG icons taken from the [Material Design](https://material.io/resources/icons) web page and they are located in the file `pdfeditor.properties` located in the `control` folder of the application. I have added a model named `pdfeditor` in the `manifest.json` file which allows to use this new model the same way as you use the `i18n` model of SAPUI5.
 
 ```Json
 "models": {
@@ -124,7 +124,7 @@ The images of the buttons are SVG icons taken from the [Material Design](https:/
 	}
 ```
 
-Currently there are two icons available.
+ When you need additional icons just add them to the `pdfeditor.properties` file. Currently there are two icons available.
 ```Text
 # This is the resource bundle with icons for PDFEditor
 #~~~~ Custom Icons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
